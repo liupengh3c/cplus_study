@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <iostream>
 
 #define MAX_CONNECT_NUM 2
 #define BUFFER_SIZE 1024
@@ -43,6 +44,7 @@ int main()
         bzero(buffer, BUFFER_SIZE);
         len = sizeof(client_addr);
         //new_fd = accept(fd,(struct sockaddr *)&client_addr,&len);
+        std::cout << "-----begin to accept message-----" << std::endl;
         new_fd = accept(fd, NULL, NULL);
         if (new_fd < 0)
         {
@@ -59,7 +61,6 @@ int main()
             printf(" %d", buffer[i]);
         }
         close(new_fd);
-        break;
     }
     close(fd);
 }
